@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Rohan Ramola</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+</head>
+<body>
+    <div class="navBar">
+        <div class="dev">Portfolio.</div>
+        <div class="links">
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#cpntact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <section id="profile">
+        <div class="pic_container">
+            <img src="./assets/profile-pic.png" alt="My profile picture"/>
+        </div>
+        <div class="section_text">
+            <h1 class="title">Software Engineer</h1>
+            <p class="text-p">Hi! I'm Rohan Ramola. A passionate Programmer
+                specialized in Android Application development.</p>
+            <div class="btn-container">
+                <button id="btn-download" onclick="window.open('./assets/Rohan_Ramola_Resume.pdf')">Download Resume</button>
+                <button id="btn-contact" onclick="location.href='./#contact'">Contact me</button>
+            </div>
+            <div id="social-containers">
+                <img src="./assets/linkedin.png" alt="My linkedin profile"
+                class="icon" onclick="location.href='https://www.linkedin.com/in/rohanramola13/'"/>
+                <img src="./assets/github.png" alt="My github profile"
+                class="icon" onclick="location.href='https://www.github.com/rohan0713/'"/>
+            </div>
+            <div class="tech-container">
+                <p class="text-tech">Tech stack  | </p>
+                <div class="skills">
+                    <img src="./assets/kotlin.png" alt="kotlin" class="skill"/>
+                    <img src="./assets/android.png" alt="android" class="skill"/>
+                    <img src="./assets/java.png" alt="android" class="skill"/>
+                    <img src="./assets/javascript.png" alt="android" class="skill"/>
+                    <img src="./assets/python.png" alt="android" class="skill"/>
+                    <img src="./assets/mongo.png" alt="android" class="skill"/>
+                    <img src="./assets/sql.png" alt="android" class="skill"/>
+                    <img src="./assets/docker.png" alt="android" class="skill"/>
+                    <img src="./assets/linux.png" alt="android" class="skill"/>
+                    <img src="./assets/node.png" alt="android" class="skill"/>
+                    <img src="./assets/react.png" alt="android" class="skill"/>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
