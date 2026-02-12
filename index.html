@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rohan Ramola | Mobile Engineer</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 
 <body>
 
     <nav class="fade-in">
-        <a href="#" style="font-weight: 600; font-size: 1.1rem; color: #fff; text-decoration: none;">Portfolio.</a>
+        <a href="#" class="nav-logo">Rohan Ramola.</a>
         <ul class="nav-links">
             <li><a href="#about" class="nav-link">About</a></li>
             <li><a href="#work" class="nav-link">Work</a></li>
@@ -22,53 +25,59 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <div class="hero-text">
-                    <p class="font-serif fade-in delay-1">Hello, I am</p>
-                    <h1 class="fade-in delay-2">Rohan Ramola.</h1>
-                    <p class="fade-in delay-3" style="font-size: 1.25rem; color: #cbd5e1;">
-                        Android & Flutter Developer designing scalable, high-performance mobile experiences.
+                <div class="hero-text fade-in delay-1">
+                    <p class="font-serif">Hello, I'm Rohan</p>
+                    <h1>Building High-Performance<br>Mobile Experiences.</h1>
+                    <p class="delay-2">
+                        Software Engineer specializing in <strong>Android & Flutter</strong>.
+                        I architect scalable apps that drive user engagement and business growth.
                     </p>
-                    <div class="fade-in delay-4">
-                        <a href="#work" class="btn btn-primary">View Work</a>
+                    <div class="delay-3" style="display: flex; align-items: center; gap: 1rem; justify-content: start;">
+                        <a href="#work" class="btn btn-primary">View Projects</a>
                         <a href="assets/Rohan_Ramola_Resume.pdf" target="_blank" class="btn btn-secondary">Resume</a>
                     </div>
                 </div>
                 <div class="profile-img-container fade-in delay-2">
-                    <img src="./assets/profile.jpeg" alt="Rohan Ramola" class="profile-img">
+                    <img src="./assets/profile-pic-2.png" alt="Rohan Ramola" class="profile-img">
                 </div>
             </div>
         </section>
 
         <section id="about">
-            <h2 class="section-title fade-in">About</h2>
+            <h2 class="section-title fade-in">About & Impact</h2>
             <div class="grid grid-2 fade-in delay-1">
                 <div>
-                    <h3 style="margin-bottom: 1rem; font-size: 1.8rem;">Clean Code.<br><span
-                            class="text-secondary">Intuitive Design.</span></h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-                        With over 2.5 years of experience, I specialize in building robust mobile applications using
-                        Kotlin and Flutter. My approach combines technical precision with a keen eye for user
-                        experience.
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Engineering for Scale.</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
+                        With <strong>2.5+ years of experience</strong>, I don't just write code; I build systems.
+                        Currently at <strong>Big Oh Tech</strong> (outsourced to NEC India), I manage high-stakes mobile
+                        projects, reducing crash rates and optimizing load times.
                     </p>
-                    <p style="color: var(--text-secondary);">
-                        Currently carrying out high-impact projects at <span style="color: #fff;">Big Oh Tech</span>
-                        (NEC India), focusing on scalable architecture and performance optimization.
-                    </p>
+                    <div style="display: flex; gap: 3rem; margin-top: 1rem;">
+                        <div>
+                            <h4 style="font-size: 2.5rem; margin-bottom: 0.2rem; color: var(--accent);">30%</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); font-weight: 500;">Faster Load
+                                Times</p>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 2.5rem; margin-bottom: 0.2rem; color: var(--accent);">10+</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); font-weight: 500;">Projects
+                                Delivered</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h4 style="margin-bottom: 1.5rem;">Tech Stack</h4>
+                    <h4 style="margin-bottom: 1.5rem; font-weight: 600;">Core Technologies</h4>
                     <div class="tags">
                         <span class="tag">Kotlin</span>
-                        <span class="tag">Java</span>
                         <span class="tag">Flutter</span>
-                        <span class="tag">Dart</span>
                         <span class="tag">Jetpack Compose</span>
+                        <span class="tag">Dart</span>
                         <span class="tag">Riverpod</span>
                         <span class="tag">Clean Architecture</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">Firebase</span>
-                        <span class="tag">Git/CI/CD</span>
+                        <span class="tag">CI/CD Pipeline</span>
+                        <span class="tag">Performance Optimization</span>
                     </div>
                 </div>
             </div>
@@ -78,30 +87,30 @@
             <h2 class="section-title fade-in">Selected Work</h2>
             <div class="grid grid-3 fade-in delay-1">
 
-                <!-- Project 1 -->
                 <article class="project-card">
                     <img src="./assets/project-1.png" alt="Yatra App" class="project-img">
                     <div class="project-info">
+                        <span class="project-category">Native Android</span>
                         <h3>Yatra</h3>
-                        <p>Android • Kotlin • Compose</p>
-                        <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8;">
-                            Revamped UI and optimized performance using Coroutines, reducing load times by 30%.
+                        <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                            Optimized performance using Coroutines & Flow, successfully reducing app load times by
+                            <strong>30%</strong> and boosting user retention.
                         </p>
                         <div class="tags">
-                            <span class="tag">Android</span>
                             <span class="tag">Kotlin</span>
+                            <span class="tag">Compose</span>
                         </div>
                     </div>
                 </article>
 
-                <!-- Project 2 -->
                 <article class="project-card">
                     <img src="./assets/project-2.png" alt="Mi-City CEP" class="project-img">
                     <div class="project-info">
+                        <span class="project-category">Flutter Architecture</span>
                         <h3>Mi-City CEP</h3>
-                        <p>Flutter • GetX • Server-Driven UI</p>
-                        <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8;">
-                            Implemented dynamic layout updates via server-driven UI, eliminating frequent app releases.
+                        <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                            Engineered a server-driven UI framework allowing real-time layout updates without app store
+                            releases.
                         </p>
                         <div class="tags">
                             <span class="tag">Flutter</span>
@@ -110,19 +119,18 @@
                     </div>
                 </article>
 
-                <!-- Project 3 -->
                 <article class="project-card">
                     <img src="./assets/project-3.png" alt="VMS System" class="project-img">
                     <div class="project-info">
+                        <span class="project-category">Video Streaming</span>
                         <h3>VMS System</h3>
-                        <p>Flutter • Riverpod • Video</p>
-                        <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8;">
-                            Video Management System with efficient async streams for seamless playback and background
-                            downloads.
+                        <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                            Built a scalable video management system handling concurrent async streams for seamless
+                            playback.
                         </p>
                         <div class="tags">
-                            <span class="tag">Flutter</span>
                             <span class="tag">Riverpod</span>
+                            <span class="tag">Dio</span>
                         </div>
                     </div>
                 </article>
@@ -131,21 +139,19 @@
         </section>
 
         <section id="contact">
-            <div class="contact-grid fade-in">
-                <h2>Let's create something specific.</h2>
-                <p style="color: var(--text-secondary); max-width: 500px;">
-                    Open to new opportunities and collaborations. Feel free to reach out.
-                </p>
-                <a href="mailto:rohanramola63@gmail.com" class="contact-link">rohanramola63@gmail.com</a>
+            <div class="contact-section fade-in">
+                <p class="font-serif" style="margin-bottom: 1rem; color: var(--text-muted);">What's Next?</p>
+                <h2 style="margin-bottom: 2rem; font-size: 2.5rem;">Let's work together.</h2>
+                <a href="mailto:rohanramola63@gmail.com" class="contact-email">rohanramola63@gmail.com</a>
 
-                <div style="display: flex; gap: 2rem; margin-top: 1rem;">
+                <div style="display: flex; gap: 2.5rem; justify-content: center; margin-top: 4rem;">
                     <a href="https://linkedin.com/in/rohanramola13/"
-                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">LinkedIn ↗</a>
+                        style="color: var(--text-primary); text-decoration: none; font-weight: 500; font-size: 1.1rem;">LinkedIn</a>
                     <a href="https://github.com/rohan0713"
-                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">GitHub ↗</a>
+                        style="color: var(--text-primary); text-decoration: none; font-weight: 500; font-size: 1.1rem;">GitHub</a>
                     <a href="tel:+919582308296"
-                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">+91 9582 308
-                        296</a>
+                        style="color: var(--text-primary); text-decoration: none; font-weight: 500; font-size: 1.1rem;">+91
+                        9582 308 296</a>
                 </div>
             </div>
         </section>
@@ -153,7 +159,7 @@
     </main>
 
     <footer>
-        <p>© 2024 Rohan Ramola. Crafted with attention to detail.</p>
+        <p>© 2024 Rohan Ramola. Measuring impact, one line of code at a time.</p>
     </footer>
 
 </body>
