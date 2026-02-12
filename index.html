@@ -4,283 +4,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohan Ramola - Android & Flutter Developer</title>
+    <title>Rohan Ramola | Android & Flutter Developer</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
+    <!-- Material Icons (Optional if needed, but using text/images for now) -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
-    <div class="navBar">
-        <div class="dev">Rohan Ramola.</div>
-        <div class="links">
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </div>
-    <section id="profile">
-        <div class="pic_container">
-            <img src="./assets/profile-pic.png" alt="Rohan Ramola profile picture" />
-        </div>
-        <div class="section_text">
-            <p class="section__text__p1">Hello, I'm</p>
-            <h1 class="title">Rohan Ramola</h1>
-            <p class="section__text__p2">Android + Flutter Developer</p>
-            <p class="text-p" style="max-width: 600px;">
-                Android + Flutter Developer with 2.5+ years of experience delivering scalable apps, improving
-                performance, and building clean, maintainable architectures.
-            </p>
-            <div class="btn-container">
-                <button class="btn btn-color-2" onclick="window.open('./assets/Rohan_Ramola_Resume.pdf')">Download
-                    CV</button>
-                <button class="btn btn-color-1" onclick="location.href='./#contact'">Contact Info</button>
-            </div>
-            <div id="social-containers">
-                <img src="./assets/linkedin.png" alt="My linkedin profile" class="icon"
-                    onclick="openUrl('https://linkedin.com/in/rohanramola13/')" />
-                <img src="./assets/github.png" alt="My github profile" class="icon"
-                    onclick="openUrl('https://github.com/rohan0713')" />
-            </div>
-        </div>
 
-        <img src="./assets/arrow.png" alt="arrow icon" class="icon-arrow" onclick="location.href='./#about'" />
-    </section>
-
-    <section id="about">
-        <p class="section__text__p1">Get To Know More</p>
-        <h1 class="title">About Me</h1>
-        <div class="about-container">
-            <div class="pic-about">
-                <img src="./assets/profile-pic.png" alt="My picture" class="about-pic" style="object-fit:cover;" />
-                <!-- Note: Using profile-pic again if project-1 is not suitable or available as "about-pic" -->
-            </div>
-            <div class="about-details">
-                <div class="about-section">
-                    <div class="details-container">
-                        <img src="./assets/experience.png" alt="exp icon" class="icon" />
-                        <h3>Experience</h3>
-                        <p class="text-p">2.5+ years <br />App Development</p>
-                    </div>
-                    <div class="details-container">
-                        <img src="./assets/education.png" alt="education icon" class="icon" />
-                        <h3>Education</h3>
-                        <p class="text-p">MCA, Masters of Computer Applications<br />BSc. Computer Science</p>
-                    </div>
-                </div>
-                <div class="text-container">
-                    <p class="text-p">
-                        I am a passionate Android and Flutter developer with a strong foundation in building
-                        high-performance mobile applications.
-                        Currently working as a Software Engineer at Big Oh Tech, I specialize in creating scalable
-                        architectures using Kotlin, Dart,
-                        and modern frameworks like Jetpack Compose and Riverpod.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <img src="./assets/arrow.png" alt="arrow icon" class="icon-arrow" onclick="location.href='./#skills'" />
-    </section>
-
-    <section id="skills">
-        <p class="section__text__p1">Explore My</p>
-        <h1 class="title">Skills</h1>
-        <div class="exp-container">
-            <div class="details-container">
-                <h2 class="exp-sub-title">Languages</h2>
-                <div class="article-container">
-                    <article>
-                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
-                        <div>
-                            <h3>Kotlin</h3>
-                            <p>Experienced</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
-                        <div>
-                            <h3>Java</h3>
-                            <p>Experienced</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
-                        <div>
-                            <h3>Dart</h3>
-                            <p>Experienced</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
-                        <div>
-                            <h3>Python</h3>
-                            <p>Intermediate</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
-                        <div>
-                            <h3>JavaScript</h3>
-                            <p>Intermediate</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
-                        <div>
-                            <h3>C++</h3>
-                            <p>Basic</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-            <div class="details-container">
-                <h2 class="exp-sub-title">Frameworks & Tools</h2>
-                <div class="article-container">
-                    <article>
-                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
-                        <div>
-                            <h3>Flutter</h3>
-                            <p>Experienced</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
-                        <div>
-                            <h3>Jetpack Compose</h3>
-                            <p>Intermediate</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
-                        <div>
-                            <h3>Firebase</h3>
-                            <p>Experienced</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
-                        <div>
-                            <h3>Git/GitHub</h3>
-                            <p>Experienced</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
-                        <div>
-                            <h3>Azure</h3>
-                            <p>Intermediate</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
-                        <div>
-                            <h3>SQL/Room</h3>
-                            <p>Experienced</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
-                        <div>
-                            <h3>Riverpod/GetX</h3>
-                            <p>Experienced</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-
-        <img src="./assets/arrow.png" alt="arrow icon" class="icon-arrow" onclick="location.href='./#projects'" />
-    </section>
-
-    <section id="projects">
-        <p class="section__text__p1">Browse My Recent</p>
-        <h1 class="title">Projects</h1>
-        <div class="exp-container">
-
-            <div class="details-container color-container">
-                <div class="article-container">
-                    <img src="./assets/project-1.png" alt="Yatra Project" class="project-img" />
-                </div>
-                <h2 class="project-title">Yatra</h2>
-                <p class="text-p fade-text">Android App (Kotlin, Compose)</p>
-                <div class="btn-container">
-                    <button class="btn btn-color-2 project-btn"
-                        onclick="openUrl('https://github.com/rohan0713')">Github</button>
-                    <!-- <button class="btn btn-color-2 project-btn" onclick="location.href=''">Live Demo</button> -->
-                </div>
-            </div>
-
-            <div class="details-container color-container">
-                <div class="article-container">
-                    <img src="./assets/project-2.png" alt="Mi-City CEP Project" class="project-img" />
-                </div>
-                <h2 class="project-title">Mi-City CEP</h2>
-                <p class="text-p fade-text">Flutter App (GetX, Dio)</p>
-                <div class="btn-container">
-                    <button class="btn btn-color-2 project-btn"
-                        onclick="openUrl('https://github.com/rohan0713')">Github</button>
-                </div>
-            </div>
-
-            <div class="details-container color-container">
-                <div class="article-container">
-                    <img src="./assets/project-3.png" alt="VMS Project" class="project-img" />
-                </div>
-                <h2 class="project-title">VMS System</h2>
-                <p class="text-p fade-text">Video Management (Flutter, Riverpod)</p>
-                <div class="btn-container">
-                    <button class="btn btn-color-2 project-btn"
-                        onclick="openUrl('https://github.com/rohan0713')">Github</button>
-                </div>
-            </div>
-        </div>
-
-        <img src="./assets/arrow.png" alt="arrow icon" class="icon-arrow" onclick="location.href='./#contact'" />
-    </section>
-
-    <section id="contact">
-        <p class="section__text__p1">Get in Touch</p>
-        <h1 class="title">Contact Me</h1>
-        <div class="contact-info-upper-container">
-            <div class="contact-info-container">
-                <img src="./assets/email.png" alt="Email icon" class="icon contact-iconClass" />
-                <p><a href="mailto:rohanramola63@gmail.com">rohanramola63@gmail.com</a></p>
-            </div>
-            <div class="contact-info-container">
-                <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-iconClass" />
-                <p><a href="https://linkedin.com/in/rohanramola13/" target="_blank">LinkedIn</a></p>
-            </div>
-            <div class="contact-info-container">
-                <img src="./assets/project-1.png" alt="Phone" class="icon contact-iconClass"
-                    style="object-fit: contain; opacity: 0; position: absolute;" /> <!-- Spacer or remove -->
-                <!-- Replacing with phone text if needed or just keep email/linkedin as per template design -->
-                <p><a href="tel:+919582308296">+91-9582308296</a></p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
+    <!-- Top App Bar -->
+    <header class="top-app-bar">
+        <div class="headline-small">Rohan Ramola</div>
         <nav>
-            <div class="nav-links-container">
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
         </nav>
-        <p>Copyright &#169; 2024 Rohan Ramola. All Rights Reserved.</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Hero Section -->
+        <section id="profile" class="hero-content">
+            <div class="hero-text">
+                <span class="body-large" style="color: var(--md-sys-color-primary);">Hello, I'm</span>
+                <h1 class="display-large">Rohan Ramola</h1>
+                <h2 class="headline-medium" style="color: var(--md-sys-color-secondary);">Android + Flutter Developer
+                </h2>
+                <p class="body-large">
+                    Building scalable mobile applications with 2.5+ years of experience.
+                    Focusing on clean architecture, performance optimization, and seamless user experiences.
+                </p>
+                <div class="button-group">
+                    <button class="btn btn-filled" onclick="window.open('./assets/Rohan_Ramola_Resume.pdf')">
+                        Download CV
+                    </button>
+                    <button class="btn btn-outlined" onclick="location.href='./#contact'">
+                        Contact Me
+                    </button>
+                </div>
+                <div class="social-links" style="justify-content: start;">
+                    <a href="https://linkedin.com/in/rohanramola13/" target="_blank" class="icon-btn">
+                        <img src="./assets/linkedin.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://github.com/rohan0713" target="_blank" class="icon-btn">
+                        <img src="./assets/github.png" alt="GitHub">
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="./assets/profile-pic.png" alt="Rohan Ramola" class="profile-pic">
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="headline-large text-center">About Me</h2>
+            <div class="about-grid">
+                <div class="card card-elevated">
+                    <h3 class="headline-medium">Experience</h3>
+                    <p class="body-large">2.5+ Years</p>
+                    <p class="body-medium">Specializing in Native Android and Cross-platform Flutter development.</p>
+                </div>
+                <div class="card card-elevated">
+                    <h3 class="headline-medium">Education</h3>
+                    <p class="body-large">MCA</p>
+                    <p class="body-medium">Masters of Computer Applications from Amity University Noida.</p>
+                </div>
+            </div>
+            <div class="mt-4 text-center" style="max-width: 800px; margin: 32px auto;">
+                <p class="body-large">
+                    I am currently a Software Engineer at Big Oh Tech (outsourced to NEC India), managing multiple
+                    high-stakes projects.
+                    My journey started with a strong foundation in Java and C++, evolving into a passion for modern
+                    mobile tech stacks
+                    like Jetpack Compose and Flutter.
+                </p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="headline-large text-center">Skills & Technologies</h2>
+
+            <div class="about-grid">
+                <div class="card card-elevated">
+                    <h3 class="title-large mb-4">Languages</h3>
+                    <div class="chip-container">
+                        <span class="chip">Kotlin</span>
+                        <span class="chip">Java</span>
+                        <span class="chip">Dart</span>
+                        <span class="chip">Python</span>
+                        <span class="chip">C++</span>
+                        <span class="chip">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="card card-elevated">
+                    <h3 class="title-large mb-4">Frameworks & Libraries</h3>
+                    <div class="chip-container">
+                        <span class="chip">Flutter</span>
+                        <span class="chip">Jetpack Compose</span>
+                        <span class="chip">Riverpod</span>
+                        <span class="chip">GetX</span>
+                        <span class="chip">Retrofit</span>
+                        <span class="chip">Dagger Hilt</span>
+                        <span class="chip">Room DB</span>
+                    </div>
+                </div>
+
+                <div class="card card-elevated">
+                    <h3 class="title-large mb-4">Tools & Platforms</h3>
+                    <div class="chip-container">
+                        <span class="chip">Android Studio</span>
+                        <span class="chip">VS Code</span>
+                        <span class="chip">Git/GitHub/GitLab</span>
+                        <span class="chip">Firebase</span>
+                        <span class="chip">Azure</span>
+                        <span class="chip">JIRA</span>
+                        <span class="chip">Postman</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="headline-large text-center">Featured Projects</h2>
+
+            <div class="about-grid">
+                <!-- Project 1 -->
+                <div class="card card-elevated">
+                    <img src="./assets/project-1.png" alt="Yatra" class="card-image">
+                    <h3 class="headline-medium">Yatra</h3>
+                    <p class="body-medium mb-4" style="color: var(--md-sys-color-primary);">Android (Kotlin, Compose)
+                    </p>
+                    <p class="body-large">
+                        Revamped UI using Jetpack Compose, improving engagement. Optimized performance using Coroutines,
+                        reducing load times by 30%.
+                    </p>
+                    <div class="button-group">
+                        <button class="btn btn-outlined" onclick="window.open('https://github.com/rohan0713')">
+                            GitHub
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="card card-elevated">
+                    <img src="./assets/project-2.png" alt="Mi-City CEP" class="card-image">
+                    <h3 class="headline-medium">Mi-City CEP</h3>
+                    <p class="body-medium mb-4" style="color: var(--md-sys-color-primary);">Flutter (GetX, Dio)</p>
+                    <p class="body-large">
+                        Implemented server-driven UI for real-time layout updates. Led complete lifecycle from design to
+                        deployment.
+                    </p>
+                    <div class="button-group">
+                        <button class="btn btn-outlined" onclick="window.open('https://github.com/rohan0713')">
+                            GitHub
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="card card-elevated">
+                    <img src="./assets/project-3.png" alt="VMS System" class="card-image">
+                    <h3 class="headline-medium">VMS System</h3>
+                    <p class="body-medium mb-4" style="color: var(--md-sys-color-primary);">Flutter (Riverpod)</p>
+                    <p class="body-large">
+                        Video Management System with efficient async streams for playback and background downloads.
+                        Scalable clean architecture.
+                    </p>
+                    <div class="button-group">
+                        <button class="btn btn-outlined" onclick="window.open('https://github.com/rohan0713')">
+                            GitHub
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Contact Section -->
+        <section id="contact" style="min-height: 50vh; justify-content: center;">
+            <div class="card card-elevated" style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <h2 class="headline-medium">Get In Touch</h2>
+                <p class="body-large mb-8">
+                    I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll
+                    try my best to get back to you!
+                </p>
+
+                <div style="display: flex; flex-direction: column; gap: 16px; align-items: center;">
+                    <a href="mailto:rohanramola63@gmail.com" class="btn btn-filled" style="width: 100%;">
+                        rohanramola63@gmail.com
+                    </a>
+                    <a href="tel:+919582308296" class="btn btn-outlined" style="width: 100%;">
+                        +91-9582-308-296
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p class="body-medium">© 2024 Rohan Ramola. Built with Material Design 3 principles.</p>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/rohanramola13/" target="_blank" class="icon-btn">
+                <img src="./assets/linkedin.png" alt="LinkedIn">
+            </a>
+            <a href="https://github.com/rohan0713" target="_blank" class="icon-btn">
+                <img src="./assets/github.png" alt="GitHub">
+            </a>
+        </div>
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        function openUrl(url) {
-            window.open(url, '_blank');
-        }
-    </script>
 </body>
 
 </html>
