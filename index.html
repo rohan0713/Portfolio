@@ -4,233 +4,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohan Ramola | Android & Flutter Developer</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-    <!-- Material Icons (Optional if needed, but using text/images for now) -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Rohan Ramola | Mobile Engineer</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <!-- Top App Bar -->
-    <header class="top-app-bar">
-        <div class="headline-small">Rohan Ramola</div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav class="fade-in">
+        <a href="#" style="font-weight: 600; font-size: 1.1rem; color: #fff; text-decoration: none;">RR.</a>
+        <ul class="nav-links">
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#work" class="nav-link">Work</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
 
-    <main class="container">
-
-        <!-- Hero Section -->
-        <section id="profile" class="hero-content">
-            <div class="hero-text">
-                <span class="body-large" style="color: var(--md-sys-color-primary);">Hello, I'm</span>
-                <h1 class="display-large">Rohan Ramola</h1>
-                <h2 class="headline-medium" style="color: var(--md-sys-color-secondary);">Android + Flutter Developer
-                </h2>
-                <p class="body-large">
-                    Building scalable mobile applications with 2.5+ years of experience.
-                    Focusing on clean architecture, performance optimization, and seamless user experiences.
-                </p>
-                <div class="button-group">
-                    <button class="btn btn-filled" onclick="window.open('./assets/Rohan_Ramola_Resume.pdf')">
-                        Download CV
-                    </button>
-                    <button class="btn btn-outlined" onclick="location.href='./#contact'">
-                        Contact Me
-                    </button>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p class="font-serif fade-in delay-1">Hello, I am</p>
+                    <h1 class="fade-in delay-2">Rohan Ramola.</h1>
+                    <p class="fade-in delay-3" style="font-size: 1.25rem; color: #cbd5e1;">
+                        Android & Flutter Developer designing scalable, high-performance mobile experiences.
+                    </p>
+                    <div class="fade-in delay-4">
+                        <a href="#work" class="btn btn-primary">View Work</a>
+                        <a href="assets/Rohan_Ramola_Resume.pdf" target="_blank" class="btn btn-secondary">Resume</a>
+                    </div>
                 </div>
-                <div class="social-links" style="justify-content: start;">
-                    <a href="https://linkedin.com/in/rohanramola13/" target="_blank" class="icon-btn">
-                        <img src="./assets/linkedin.png" alt="LinkedIn">
-                    </a>
-                    <a href="https://github.com/rohan0713" target="_blank" class="icon-btn">
-                        <img src="./assets/github.png" alt="GitHub">
-                    </a>
+                <div class="profile-img-container fade-in delay-2">
+                    <img src="./assets/profile-pic.png" alt="Rohan Ramola" class="profile-img">
                 </div>
-            </div>
-            <div class="hero-image-wrapper">
-                <img src="./assets/profile-pic.png" alt="Rohan Ramola" class="profile-pic">
             </div>
         </section>
 
-        <div class="divider"></div>
-
-        <!-- About Section -->
         <section id="about">
-            <h2 class="headline-large text-center">About Me</h2>
-            <div class="about-grid">
-                <div class="card card-elevated">
-                    <h3 class="headline-medium">Experience</h3>
-                    <p class="body-large">2.5+ Years</p>
-                    <p class="body-medium">Specializing in Native Android and Cross-platform Flutter development.</p>
-                </div>
-                <div class="card card-elevated">
-                    <h3 class="headline-medium">Education</h3>
-                    <p class="body-large">MCA</p>
-                    <p class="body-medium">Masters of Computer Applications from Amity University Noida.</p>
-                </div>
-            </div>
-            <div class="mt-4 text-center" style="max-width: 800px; margin: 32px auto;">
-                <p class="body-large">
-                    I am currently a Software Engineer at Big Oh Tech (outsourced to NEC India), managing multiple
-                    high-stakes projects.
-                    My journey started with a strong foundation in Java and C++, evolving into a passion for modern
-                    mobile tech stacks
-                    like Jetpack Compose and Flutter.
-                </p>
-            </div>
-        </section>
-
-        <div class="divider"></div>
-
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2 class="headline-large text-center">Skills & Technologies</h2>
-
-            <div class="about-grid">
-                <div class="card card-elevated">
-                    <h3 class="title-large mb-4">Languages</h3>
-                    <div class="chip-container">
-                        <span class="chip">Kotlin</span>
-                        <span class="chip">Java</span>
-                        <span class="chip">Dart</span>
-                        <span class="chip">Python</span>
-                        <span class="chip">C++</span>
-                        <span class="chip">JavaScript</span>
-                    </div>
+            <h2 class="section-title fade-in">About</h2>
+            <div class="grid grid-2 fade-in delay-1">
+                <div>
+                    <h3 style="margin-bottom: 1rem; font-size: 1.8rem;">Clean Code.<br><span
+                            class="text-secondary">Intuitive Design.</span></h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        With over 2.5 years of experience, I specialize in building robust mobile applications using
+                        Kotlin and Flutter. My approach combines technical precision with a keen eye for user
+                        experience.
+                    </p>
+                    <p style="color: var(--text-secondary);">
+                        Currently carrying out high-impact projects at <span style="color: #fff;">Big Oh Tech</span>
+                        (NEC India), focusing on scalable architecture and performance optimization.
+                    </p>
                 </div>
 
-                <div class="card card-elevated">
-                    <h3 class="title-large mb-4">Frameworks & Libraries</h3>
-                    <div class="chip-container">
-                        <span class="chip">Flutter</span>
-                        <span class="chip">Jetpack Compose</span>
-                        <span class="chip">Riverpod</span>
-                        <span class="chip">GetX</span>
-                        <span class="chip">Retrofit</span>
-                        <span class="chip">Dagger Hilt</span>
-                        <span class="chip">Room DB</span>
-                    </div>
-                </div>
-
-                <div class="card card-elevated">
-                    <h3 class="title-large mb-4">Tools & Platforms</h3>
-                    <div class="chip-container">
-                        <span class="chip">Android Studio</span>
-                        <span class="chip">VS Code</span>
-                        <span class="chip">Git/GitHub/GitLab</span>
-                        <span class="chip">Firebase</span>
-                        <span class="chip">Azure</span>
-                        <span class="chip">JIRA</span>
-                        <span class="chip">Postman</span>
+                <div class="card">
+                    <h4 style="margin-bottom: 1.5rem;">Tech Stack</h4>
+                    <div class="tags">
+                        <span class="tag">Kotlin</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">Flutter</span>
+                        <span class="tag">Dart</span>
+                        <span class="tag">Jetpack Compose</span>
+                        <span class="tag">Riverpod</span>
+                        <span class="tag">Clean Architecture</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">Git/CI/CD</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="divider"></div>
+        <section id="work">
+            <h2 class="section-title fade-in">Selected Work</h2>
+            <div class="grid grid-3 fade-in delay-1">
 
-        <!-- Projects Section -->
-        <section id="projects">
-            <h2 class="headline-large text-center">Featured Projects</h2>
-
-            <div class="about-grid">
                 <!-- Project 1 -->
-                <div class="card card-elevated">
-                    <img src="./assets/project-1.png" alt="Yatra" class="card-image">
-                    <h3 class="headline-medium">Yatra</h3>
-                    <p class="body-medium mb-4" style="color: var(--md-sys-color-primary);">Android (Kotlin, Compose)
-                    </p>
-                    <p class="body-large">
-                        Revamped UI using Jetpack Compose, improving engagement. Optimized performance using Coroutines,
-                        reducing load times by 30%.
-                    </p>
-                    <div class="button-group">
-                        <button class="btn btn-outlined" onclick="window.open('https://github.com/rohan0713')">
-                            GitHub
-                        </button>
+                <article class="project-card">
+                    <img src="./assets/project-1.png" alt="Yatra App" class="project-img">
+                    <div class="project-info">
+                        <h3>Yatra</h3>
+                        <p>Android • Kotlin • Compose</p>
+                        <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8;">
+                            Revamped UI and optimized performance using Coroutines, reducing load times by 30%.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Android</span>
+                            <span class="tag">Kotlin</span>
+                        </div>
                     </div>
-                </div>
+                </article>
 
                 <!-- Project 2 -->
-                <div class="card card-elevated">
-                    <img src="./assets/project-2.png" alt="Mi-City CEP" class="card-image">
-                    <h3 class="headline-medium">Mi-City CEP</h3>
-                    <p class="body-medium mb-4" style="color: var(--md-sys-color-primary);">Flutter (GetX, Dio)</p>
-                    <p class="body-large">
-                        Implemented server-driven UI for real-time layout updates. Led complete lifecycle from design to
-                        deployment.
-                    </p>
-                    <div class="button-group">
-                        <button class="btn btn-outlined" onclick="window.open('https://github.com/rohan0713')">
-                            GitHub
-                        </button>
+                <article class="project-card">
+                    <img src="./assets/project-2.png" alt="Mi-City CEP" class="project-img">
+                    <div class="project-info">
+                        <h3>Mi-City CEP</h3>
+                        <p>Flutter • GetX • Server-Driven UI</p>
+                        <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8;">
+                            Implemented dynamic layout updates via server-driven UI, eliminating frequent app releases.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Flutter</span>
+                            <span class="tag">GetX</span>
+                        </div>
                     </div>
-                </div>
+                </article>
 
                 <!-- Project 3 -->
-                <div class="card card-elevated">
-                    <img src="./assets/project-3.png" alt="VMS System" class="card-image">
-                    <h3 class="headline-medium">VMS System</h3>
-                    <p class="body-medium mb-4" style="color: var(--md-sys-color-primary);">Flutter (Riverpod)</p>
-                    <p class="body-large">
-                        Video Management System with efficient async streams for playback and background downloads.
-                        Scalable clean architecture.
-                    </p>
-                    <div class="button-group">
-                        <button class="btn btn-outlined" onclick="window.open('https://github.com/rohan0713')">
-                            GitHub
-                        </button>
+                <article class="project-card">
+                    <img src="./assets/project-3.png" alt="VMS System" class="project-img">
+                    <div class="project-info">
+                        <h3>VMS System</h3>
+                        <p>Flutter • Riverpod • Video</p>
+                        <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8;">
+                            Video Management System with efficient async streams for seamless playback and background
+                            downloads.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Flutter</span>
+                            <span class="tag">Riverpod</span>
+                        </div>
                     </div>
-                </div>
+                </article>
+
             </div>
         </section>
 
-        <div class="divider"></div>
-
-        <!-- Contact Section -->
-        <section id="contact" style="min-height: 50vh; justify-content: center;">
-            <div class="card card-elevated" style="max-width: 600px; margin: 0 auto; text-align: center;">
-                <h2 class="headline-medium">Get In Touch</h2>
-                <p class="body-large mb-8">
-                    I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll
-                    try my best to get back to you!
+        <section id="contact">
+            <div class="contact-grid fade-in">
+                <h2>Let's create something specific.</h2>
+                <p style="color: var(--text-secondary); max-width: 500px;">
+                    Open to new opportunities and collaborations. Feel free to reach out.
                 </p>
+                <a href="mailto:rohanramola63@gmail.com" class="contact-link">rohanramola63@gmail.com</a>
 
-                <div style="display: flex; flex-direction: column; gap: 16px; align-items: center;">
-                    <a href="mailto:rohanramola63@gmail.com" class="btn btn-filled" style="width: 100%;">
-                        rohanramola63@gmail.com
-                    </a>
-                    <a href="tel:+919582308296" class="btn btn-outlined" style="width: 100%;">
-                        +91-9582-308-296
-                    </a>
+                <div style="display: flex; gap: 2rem; margin-top: 1rem;">
+                    <a href="https://linkedin.com/in/rohanramola13/"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">LinkedIn ↗</a>
+                    <a href="https://github.com/rohan0713"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">GitHub ↗</a>
+                    <a href="tel:+919582308296"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">+91 9582 308
+                        296</a>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="footer">
-        <p class="body-medium">© 2024 Rohan Ramola. Built with Material Design 3 principles.</p>
-        <div class="social-links">
-            <a href="https://linkedin.com/in/rohanramola13/" target="_blank" class="icon-btn">
-                <img src="./assets/linkedin.png" alt="LinkedIn">
-            </a>
-            <a href="https://github.com/rohan0713" target="_blank" class="icon-btn">
-                <img src="./assets/github.png" alt="GitHub">
-            </a>
-        </div>
+    <footer>
+        <p>© 2024 Rohan Ramola. Crafted with attention to detail.</p>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 
 </html>
