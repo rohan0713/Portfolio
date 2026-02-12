@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Rohan Ramola</title>
+    <title>Rohan Ramola - Android & Flutter Developer</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
 </head>
+
 <body>
     <div class="navBar">
-        <div class="dev">Portfolio.</div>
+        <div class="dev">Rohan Ramola.</div>
         <div class="links">
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -21,273 +23,167 @@
     </div>
     <section id="profile">
         <div class="pic_container">
-            <img src="./assets/profile-pic.png" alt="My profile picture"/>
+            <img src="./assets/profile-pic.png" alt="Rohan Ramola profile picture" />
         </div>
         <div class="section_text">
-            <h1 class="title">Software Engineer</h1>
-            <p class="text-p">Hi! I'm Rohan Ramola. A passionate Programmer
-                specialized in Android Application development. My primary objective is to deliver outstanding applications by enhancing user experience, 
-            app/web design, and branding.</p>
+            <p class="section__text__p1">Hello, I'm</p>
+            <h1 class="title">Rohan Ramola</h1>
+            <p class="section__text__p2">Android + Flutter Developer</p>
+            <p class="text-p" style="max-width: 600px;">
+                Android + Flutter Developer with 2.5+ years of experience delivering scalable apps, improving
+                performance, and building clean, maintainable architectures.
+            </p>
             <div class="btn-container">
-                <button class="btn-download" onclick="window.open('./assets/Rohan_Ramola_Resume.pdf')">Download Resume</button>
-                <button id="btn-contact" onclick="location.href='./#contact'">Contact me</button>
+                <button class="btn btn-color-2" onclick="window.open('./assets/Rohan_Ramola_Resume.pdf')">Download
+                    CV</button>
+                <button class="btn btn-color-1" onclick="location.href='./#contact'">Contact Info</button>
             </div>
             <div id="social-containers">
-                <img src="./assets/linkedin.png" alt="My linkedin profile"
-                class="icon" onclick="location.href='https://www.linkedin.com/in/rohanramola13/'"/>
-                <img src="./assets/github.png" alt="My github profile"
-                class="icon" onclick="location.href='https://www.github.com/rohan0713/'"/>
+                <img src="./assets/linkedin.png" alt="My linkedin profile" class="icon"
+                    onclick="openUrl('https://linkedin.com/in/rohanramola13/')" />
+                <img src="./assets/github.png" alt="My github profile" class="icon"
+                    onclick="openUrl('https://github.com/rohan0713')" />
             </div>
-            <!-- <div class="tech-container">
-                <p class="text-tech">Tech stack - </p>
-                <div class="skills">
-                    <img src="./assets/kotlin.png" alt="kotlin" class="skill"/>
-                    <img src="./assets/android.png" alt="android" class="skill"/>
-                    <img src="./assets/java.png" alt="android" class="skill"/>
-                    <img src="./assets/javascript.png" alt="android" class="skill"/>
-                    <img src="./assets/python.png" alt="android" class="skill"/>
-                    <img src="./assets/mongo.png" alt="android" class="skill"/>
-                    <img src="./assets/sql.png" alt="android" class="skill"/>
-                    <img src="./assets/docker.png" alt="android" class="skill"/>
-                    <img src="./assets/linux.png" alt="android" class="skill"/>
-                    <img src="./assets/node.png" alt="android" class="skill"/>
-                    <img src="./assets/react.png" alt="android" class="skill"/>
-                </div>
-            </div> -->
         </div>
 
-        <img
-        src="/assets/arrow.png"
-        alt="arrow icon"
-        class="icon-arrow"
-        onclick="location.href='./#experience'"
-        />
+        <img src="./assets/arrow.png" alt="arrow icon" class="icon-arrow" onclick="location.href='./#about'" />
     </section>
 
-<section id="about">
-        <h1 id="text-about" class="title">About me</h1>
+    <section id="about">
+        <p class="section__text__p1">Get To Know More</p>
+        <h1 class="title">About Me</h1>
         <div class="about-container">
             <div class="pic-about">
-                <img src="./assets/project-1.png"
-                alt="My picture"
-                class="about-pic"/>
+                <img src="./assets/profile-pic.png" alt="My picture" class="about-pic" style="object-fit:cover;" />
+                <!-- Note: Using profile-pic again if project-1 is not suitable or available as "about-pic" -->
             </div>
-        <div class="about-details">
-            <div class="about-section">
-                <div class="details-container">
-                    <img src="./assets/experience.png"
-                    alt="exp icon"
-                    class="icon"/>
-                    <h3>Experience</h3>
-                    <p class="text-p">1+ years <br/> Software development</p>
+            <div class="about-details">
+                <div class="about-section">
+                    <div class="details-container">
+                        <img src="./assets/experience.png" alt="exp icon" class="icon" />
+                        <h3>Experience</h3>
+                        <p class="text-p">2.5+ years <br />App Development</p>
+                    </div>
+                    <div class="details-container">
+                        <img src="./assets/education.png" alt="education icon" class="icon" />
+                        <h3>Education</h3>
+                        <p class="text-p">MCA, Masters of Computer Applications<br />BSc. Computer Science</p>
+                    </div>
                 </div>
-                <div class="details-container">
-                    <img src="./assets/education.png"
-                    alt="education icon"
-                    class="icon"/>
-                    <h3>Education</h3>
-                    <p class="text-p">MCA, Masters of computer Application <br/> BSc. Bachelor of Science</p>
+                <div class="text-container">
+                    <p class="text-p">
+                        I am a passionate Android and Flutter developer with a strong foundation in building
+                        high-performance mobile applications.
+                        Currently working as a Software Engineer at Big Oh Tech, I specialize in creating scalable
+                        architectures using Kotlin, Dart,
+                        and modern frameworks like Jetpack Compose and Riverpod.
+                    </p>
                 </div>
-            </div>
-            <div class="text-container">
-                <p class="text-p">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, cupiditate deleniti fuga quod quam tempora debitis sequi cumque illo culpa est molestias molestiae! Dolorum omnis laborum accusantium itaque velit modi.
-                </p>
             </div>
         </div>
-        </div>
-        <img
-        src="/assets/arrow.png"
-        alt="arrow icon"
-        class="icon-arrow"
-        onclick="location.href='./#experience'"
-        />
+        <img src="./assets/arrow.png" alt="arrow icon" class="icon-arrow" onclick="location.href='./#skills'" />
     </section>
 
-    <section id="experience">
-        <h1 id="text-exp" class="title">Explore my Experience</h1>
+    <section id="skills">
+        <p class="section__text__p1">Explore My</p>
+        <h1 class="title">Skills</h1>
         <div class="exp-container">
             <div class="details-container">
-                <h2 class="exp-sub-title">Languages and Databases</h2>
+                <h2 class="exp-sub-title">Languages</h2>
                 <div class="article-container">
                     <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
+                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
                         <div>
                             <h3>Kotlin</h3>
                             <p>Experienced</p>
                         </div>
                     </article>
                     <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
-                        <div>
-                            <h3>Android</h3>
-                            <p>Experienced</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
+                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
                         <div>
                             <h3>Java</h3>
                             <p>Experienced</p>
                         </div>
                     </article>
                     <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
+                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
                         <div>
-                            <h3>javascript</h3>
-                            <p>Intermediate</p>
+                            <h3>Dart</h3>
+                            <p>Experienced</p>
                         </div>
                     </article>
                     <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
+                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
                         <div>
                             <h3>Python</h3>
                             <p>Intermediate</p>
                         </div>
                     </article>
                     <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
+                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
+                        <div>
+                            <h3>JavaScript</h3>
+                            <p>Intermediate</p>
+                        </div>
+                    </article>
+                    <article>
+                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
                         <div>
                             <h3>C++</h3>
                             <p>Basic</p>
                         </div>
                     </article>
-                    <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
-                        <div>
-                            <h3>MongoDB</h3>
-                            <p>Experienced</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
-                        <div>
-                            <h3>MySQL</h3>
-                            <p>Experienced</p>
-                        </div>
-                    </article>
                 </div>
             </div>
             <div class="details-container">
-                <h2 class="exp-sub-title">Development tools and Platforms</h2>
+                <h2 class="exp-sub-title">Frameworks & Tools</h2>
                 <div class="article-container">
                     <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
+                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
                         <div>
-                            <h3>React</h3>
-                            <p>Basic</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
-                        <div>
-                            <h3>Docker</h3>
-                            <p>Intermediate</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
-                        <div>
-                            <h3>Git</h3>
+                            <h3>Flutter</h3>
                             <p>Experienced</p>
                         </div>
                     </article>
                     <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
+                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
                         <div>
-                            <h3>Azure</h3>
-                            <p>Basic</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
-                        <div>
-                            <h3>Postman</h3>
+                            <h3>Jetpack Compose</h3>
                             <p>Intermediate</p>
                         </div>
                     </article>
                     <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
-                        <div>
-                            <h3>Linux</h3>
-                            <p>Intermediate</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
+                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
                         <div>
                             <h3>Firebase</h3>
+                            <p>Experienced</p>
+                        </div>
+                    </article>
+                    <article>
+                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
+                        <div>
+                            <h3>Git/GitHub</h3>
+                            <p>Experienced</p>
+                        </div>
+                    </article>
+                    <article>
+                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
+                        <div>
+                            <h3>Azure</h3>
                             <p>Intermediate</p>
                         </div>
                     </article>
                     <article>
-                        <img 
-                        src="./assets/checkmark.png"
-                        alt="exp-icon"
-                        class="icon"
-                        />
+                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
                         <div>
-                            <h3>MySQL</h3>
+                            <h3>SQL/Room</h3>
+                            <p>Experienced</p>
+                        </div>
+                    </article>
+                    <article>
+                        <img src="./assets/checkmark.png" alt="exp-icon" class="icon" />
+                        <div>
+                            <h3>Riverpod/GetX</h3>
                             <p>Experienced</p>
                         </div>
                     </article>
@@ -295,70 +191,96 @@
             </div>
         </div>
 
-        <img
-        src="/assets/arrow.png"
-        alt="arrow icon"
-        class="icon-arrow"
-        onclick="location.href='./#projects'"
-        />
+        <img src="./assets/arrow.png" alt="arrow icon" class="icon-arrow" onclick="location.href='./#projects'" />
     </section>
 
     <section id="projects">
-        <h1 id="text-project" class="title">Browse My Recent Projects</h1>
+        <p class="section__text__p1">Browse My Recent</p>
+        <h1 class="title">Projects</h1>
         <div class="exp-container">
-            
-            <div class="details-container">
+
+            <div class="details-container color-container">
                 <div class="article-container">
-                    <img
-                    src="./assets/project-1.png"
-                    alt="project 1"
-                    class="project-img"
-                    />
+                    <img src="./assets/project-1.png" alt="Yatra Project" class="project-img" />
                 </div>
-                <h2 class="project-title">Project One</h2>
-                <div class="btn-container-project">
-                    <button id="btn-git" class="btn-download"
-                    onclick="location.href=''">Github</button>
-                    <button id="btn-git" class="btn-download"
-                    onclick="location.href=''">Live Demo</button>
+                <h2 class="project-title">Yatra</h2>
+                <p class="text-p fade-text">Android App (Kotlin, Compose)</p>
+                <div class="btn-container">
+                    <button class="btn btn-color-2 project-btn"
+                        onclick="openUrl('https://github.com/rohan0713')">Github</button>
+                    <!-- <button class="btn btn-color-2 project-btn" onclick="location.href=''">Live Demo</button> -->
                 </div>
             </div>
 
-            <div class="details-container">
+            <div class="details-container color-container">
                 <div class="article-container">
-                    <img
-                    src="./assets/project-2.png"
-                    alt="project 1"
-                    class="project-img"
-                    />
+                    <img src="./assets/project-2.png" alt="Mi-City CEP Project" class="project-img" />
                 </div>
-                <h2 class="project-title">Project Two</h2>
-                <div class="btn-container-project">
-                    <button id="btn-git" class="btn-download"
-                    onclick="location.href=''">Github</button>
-                    <button id="btn-git" class="btn-download"
-                    onclick="location.href=''">Live Demo</button>
+                <h2 class="project-title">Mi-City CEP</h2>
+                <p class="text-p fade-text">Flutter App (GetX, Dio)</p>
+                <div class="btn-container">
+                    <button class="btn btn-color-2 project-btn"
+                        onclick="openUrl('https://github.com/rohan0713')">Github</button>
                 </div>
             </div>
 
-            <div class="details-container">
+            <div class="details-container color-container">
                 <div class="article-container">
-                    <img
-                    src="./assets/project-3.png"
-                    alt="project 1"
-                    class="project-img"
-                    />
+                    <img src="./assets/project-3.png" alt="VMS Project" class="project-img" />
                 </div>
-                <h2 class="project-title">Project Three</h2>
-                <div class="btn-container-project">
-                    <button id="btn-git" class="btn-download"
-                    onclick="location.href=''">Github</button>
-                    <button id="btn-git" class="btn-download"
-                    onclick="location.href=''">Live Demo</button>
+                <h2 class="project-title">VMS System</h2>
+                <p class="text-p fade-text">Video Management (Flutter, Riverpod)</p>
+                <div class="btn-container">
+                    <button class="btn btn-color-2 project-btn"
+                        onclick="openUrl('https://github.com/rohan0713')">Github</button>
                 </div>
             </div>
         </div>
+
+        <img src="./assets/arrow.png" alt="arrow icon" class="icon-arrow" onclick="location.href='./#contact'" />
     </section>
+
+    <section id="contact">
+        <p class="section__text__p1">Get in Touch</p>
+        <h1 class="title">Contact Me</h1>
+        <div class="contact-info-upper-container">
+            <div class="contact-info-container">
+                <img src="./assets/email.png" alt="Email icon" class="icon contact-iconClass" />
+                <p><a href="mailto:rohanramola63@gmail.com">rohanramola63@gmail.com</a></p>
+            </div>
+            <div class="contact-info-container">
+                <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-iconClass" />
+                <p><a href="https://linkedin.com/in/rohanramola13/" target="_blank">LinkedIn</a></p>
+            </div>
+            <div class="contact-info-container">
+                <img src="./assets/project-1.png" alt="Phone" class="icon contact-iconClass"
+                    style="object-fit: contain; opacity: 0; position: absolute;" /> <!-- Spacer or remove -->
+                <!-- Replacing with phone text if needed or just keep email/linkedin as per template design -->
+                <p><a href="tel:+919582308296">+91-9582308296</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <nav>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <p>Copyright &#169; 2024 Rohan Ramola. All Rights Reserved.</p>
+    </footer>
+
     <script src="script.js"></script>
+    <script>
+        function openUrl(url) {
+            window.open(url, '_blank');
+        }
+    </script>
 </body>
+
 </html>
