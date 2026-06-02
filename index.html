@@ -1,175 +1,1480 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohan Ramola | Mobile Engineer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rohan Ramola — Android & Flutter Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  :root {
+    --bg: #0a0a09;
+    --bg2: #111110;
+    --bg3: #1a1a18;
+    --surface: #1f1f1d;
+    --border: rgba(255,255,255,0.08);
+    --border-bright: rgba(255,255,255,0.15);
+    --text: #f0ede6;
+    --text-muted: #8a8880;
+    --text-dim: #4a4845;
+    --accent: #e8d5a3;
+    --accent2: #c4a96b;
+    --green: #6fcf97;
+    --mono: 'DM Mono', monospace;
+    --serif: 'Instrument Serif', serif;
+    --display: 'Syne', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--display);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.6;
+  }
+
+  /* ─── AMBIENT GLOW ─── */
+  .cursor-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(232, 213, 163, 0.04) 0%, rgba(232, 213, 163, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(10,10,9,0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-cta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 0.5rem 1.25rem;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--text); transform: translateY(-1px); }
+
+  /* Hamburger Menu Trigger */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20px;
+    height: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 102;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* Hamburger Active Animation */
+  .nav-hamburger.active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .nav-hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-hamburger.active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  /* Mobile Full-Screen Overlay Menu */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .mobile-menu.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-links {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .mobile-links a {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .mobile-links a:hover {
+    color: var(--accent);
+    transform: scale(1.05);
+  }
+
+  .mobile-cta {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 7rem 3rem; max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+  .full-width { max-width: none; padding-left: 0; padding-right: 0; }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+    padding-top: 9rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero-name {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.5rem, 3vw, 2.3rem);
+    color: var(--accent2);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-desc strong { color: var(--text); font-weight: 600; }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--text); transform: translateY(-1px); }
+
+  .btn-ghost {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    border: 1px solid var(--border-bright);
+    color: var(--text-muted);
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ─── HERO RIGHT ─── */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+  }
+
+  .stat-cell {
+    background: var(--bg2);
+    padding: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .hero-stack {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .stack-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .stack-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 0.3rem 0.75rem;
+    background: var(--bg3);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    letter-spacing: 0.04em;
+  }
+
+  .pill.highlight {
+    background: rgba(232,213,163,0.08);
+    color: var(--accent);
+    border-color: rgba(232,213,163,0.2);
+  }
+
+  .hero-stack a {
+    transition: color 0.2s;
+  }
+  .hero-stack a:hover {
+    color: var(--accent) !important;
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-title em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent2);
+  }
+
+  /* ─── EXPERIENCE (TIMELINE) ─── */
+  #experience { border-top: 1px solid var(--border); }
+
+  .timeline-container {
+    position: relative;
+    margin-top: 1rem;
+    padding-left: 20px;
+  }
+
+  /* Timeline vertical spine line */
+  .timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 0;
+    bottom: 5px;
+    width: 1px;
+    background: var(--border-bright);
+  }
+
+  .exp-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exp-item:last-child {
+    border-bottom: none;
+  }
+
+  /* Glowing bullet indicators on timeline */
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    top: 3.25rem;
+    left: -24px;
+    width: 9px;
+    height: 9px;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+    border-radius: 50%;
+    z-index: 5;
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  .exp-meta {
+    padding-top: 0.2rem;
+  }
+
+  .exp-period {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .exp-company {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .exp-location {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+  }
+
+  .exp-role {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .exp-bullets {
+    margin-bottom: 1.5rem;
+    padding-left: 1.2rem;
+  }
+
+  .exp-bullet-item {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+    position: relative;
+    list-style-type: square;
+  }
+
+  .exp-bullet-item strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .exp-achievements {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .achievement {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    background: var(--bg2);
+  }
+
+  .achievement.metric {
+    background: rgba(111,207,151,0.07);
+    border-color: rgba(111,207,151,0.25);
+    color: var(--green);
+    font-weight: 500;
+  }
+
+  /* ─── SKILLS ─── */
+  #skills { border-top: 1px solid var(--border); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .skill-category {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+
+  .skill-category:hover {
+    border-color: var(--border-bright);
+    background: var(--bg3);
+  }
+
+  .skill-cat-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+  }
+
+  .skills-pill-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 0.4rem 0.9rem;
+    background: var(--bg3);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    letter-spacing: 0.04em;
+    transition: all 0.2s ease;
+  }
+
+  .skill-pill:hover {
+    color: var(--text);
+    border-color: var(--accent2);
+    background: rgba(196,169,107,0.08);
+    transform: translateY(-1px);
+  }
+
+  .skill-pill.core {
+    background: rgba(232,213,163,0.06);
+    color: var(--accent);
+    border-color: rgba(232,213,163,0.2);
+    font-weight: 500;
+  }
+
+  .skill-pill.core:hover {
+    background: rgba(232,213,163,0.12);
+    border-color: var(--accent);
+  }
+
+  /* ─── PROJECTS ─── */
+  #projects { border-top: 1px solid var(--border); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    cursor: default;
+  }
+
+  .project-card:hover {
+    background: var(--bg3);
+    border-color: var(--accent2);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .project-index {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  .project-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--text);
+  }
+
+  .project-impact {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--accent);
+    line-height: 1.4;
+  }
+
+  .project-desc-bullets {
+    padding-left: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .project-desc-bullet {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    list-style-type: circle;
+  }
+
+  .project-desc-bullet strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 1rem;
+  }
+
+  .project-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 0.2rem 0.6rem;
+    background: var(--bg3);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── EDUCATION ─── */
+  #education { border-top: 1px solid var(--border); }
+
+  .edu-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .edu-item:last-child {
+    border-bottom: none;
+  }
+
+  .edu-year {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    padding-top: 0.2rem;
+    font-weight: 500;
+  }
+
+  .edu-degree {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--text);
+  }
+
+  .edu-school {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .edu-detail {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .contact-headline {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-headline em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--accent2);
+  }
+
+  .contact-sub {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+  }
+
+  /* Clipboard Email Container */
+  .email-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .email-wrapper:hover {
+    border-color: var(--accent);
+    background: var(--bg3);
+  }
+
+  .contact-email {
+    font-family: var(--mono);
+    font-size: 1.15rem;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+
+  .copy-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+  }
+
+  .email-wrapper:hover .copy-btn {
+    color: var(--text);
+  }
+
+  /* Clipboard Toast Alert */
+  .copy-tooltip {
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    background: var(--accent);
+    color: var(--bg);
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 0.4rem 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .copy-tooltip.active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+
+  .contact-link {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-built {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1.25rem 2rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    #hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 8rem; }
+    section { padding: 5rem 2rem; }
+    .exp-item, .edu-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .exp-item::before { top: 0.5rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  }
+</style>
+</head>
 <body>
 
-    <nav class="fade-in">
-        <a href="#" class="nav-logo">RR.</a>
-        <ul class="nav-links">
-            <li><a href="#impact" class="nav-link">Impact</a></li>
-            <li><a href="#work" class="nav-link">Work</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
+<!-- Ambient background light effect -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a class="nav-logo" href="#">RR. ▸ MOBILE ENGINEER</a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a class="nav-cta" href="https://mail.google.com/mail/?view=cm&fs=1&to=rohanramola63@gmail.com" target="_blank">Contact Me →</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle Navigation Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Fullscreen Overlay -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul class="mobile-links">
+    <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+    <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+    <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+    <li><a href="#education" onclick="toggleMenu()">Education</a></li>
+    <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+  </ul>
+  <a class="mobile-cta" href="https://mail.google.com/mail/?view=cm&fs=1&to=rohanramola63@gmail.com" target="_blank" onclick="toggleMenu()">Contact Me →</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<div id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Available for new opportunities</div>
+    <h1 class="hero-name">Rohan<br>Ramola</h1>
+    <div class="hero-title">Android &amp; Flutter Developer</div>
+    <p class="hero-desc">
+      I drive business outcomes through <strong>highly scalable architectures</strong>,
+      cross-functional product strategy, and rapid-release mobile delivery under high-stakes pressure.
+      Currently based in <strong>Delhi, India</strong>.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#projects">See My Work</a>
+      <a class="btn-ghost" href="./assets/RohanRamola-Resume-2026.pdf" target="_blank">Download CV</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <div class="stat-number">3+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">12+</div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">2k+</div>
+        <div class="stat-label">Enterprise Users</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">E2E</div>
+        <div class="stat-label">Product Ownership</div>
+      </div>
+    </div>
+
+    <div class="hero-stack">
+      <div class="stack-label">// Core Technologies</div>
+      <div class="stack-pills">
+        <span class="pill highlight">Kotlin</span>
+        <span class="pill highlight">Flutter</span>
+        <span class="pill highlight">Jetpack Compose</span>
+        <span class="pill">Java</span>
+        <span class="pill">Dart</span>
+        <span class="pill">Coroutines</span>
+        <span class="pill">Riverpod</span>
+        <span class="pill">Clean Architecture</span>
+      </div>
+    </div>
+
+    <div class="hero-stack">
+      <div class="stack-label">// Currently</div>
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div>
+          <div style="font-weight:700; font-size:0.95rem;">NEC India</div>
+          <div style="font-family:var(--mono); font-size:10px; color:var(--text-dim); margin-top:2px; letter-spacing:0.06em;">via Big Oh Tech · Software Engineer</div>
+        </div>
+        <div style="font-family:var(--mono); font-size:10px; color:var(--green); letter-spacing:0.1em;">● ACTIVE</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── EXPERIENCE ─── -->
+<section id="experience">
+  <div class="section-eyebrow">01 — Career</div>
+  <h2 class="section-title">Where I've <em>shipped</em><br>things that matter</h2>
+
+  <div class="timeline-container">
+    <!-- Item 1 (Big Oh Tech / NEC India) -->
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">APRIL 2024 — PRESENT</div>
+        <div class="exp-company">Big Oh Tech</div>
+        <div style="font-family:var(--mono); font-size:10px; color:var(--text-muted); margin-top:2px;">Outsourced to NEC India</div>
+        <div class="exp-location">Noida, UP</div>
+      </div>
+      <div>
+        <div class="exp-role">Software Engineer</div>
+        <div class="exp-tagline">Building enterprise mobile products with extreme scale</div>
+        <ul class="exp-bullets">
+          <li class="exp-bullet-item"><strong>Boosted app responsiveness by 40%</strong> executing a complete legacy migration from Java to Kotlin, and architecting a modernized UI utilizing Jetpack Compose, Coroutines and Flow.</li>
+          <li class="exp-bullet-item"><strong>Saved critical on-site client demos</strong> successfully resolving live bugs and building key use-case features prior to high-stakes executive presentations.</li>
+          <li class="exp-bullet-item"><strong>Accelerated client buy-in</strong> by rapidly prototyping a cross-platform Flutter MVP via AI tools, enforcing rigorous code reviews to maintain clean code standard.</li>
+          <li class="exp-bullet-item"><strong>Navigated high-stakes war-rooms</strong> prior to Go-Live, leading rapid defect detection and resolution efforts to ensure flawless production delivery.</li>
         </ul>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text fade-in delay-1">
-                <span class="role">Software Engineer • Mobile</span>
-                <h1>Engineering <span style="color: var(--color-primary);">Scalable</span> Mobile Solutions.</h1>
-                <p>
-                    I transform complex architectures into seamless Android & Flutter experiences.
-                    Currently driving performance and stability at <strong>NEC India</strong> (via Big Oh Tech),
-                    ensuring apps scale with user demand.
-                </p>
-                <div class="btn-group">
-                    <a href="#work" class="btn btn-primary">
-                        View Key Projects
-                    </a>
-                    <a href="assets/Rohan-Ramola-Resume-2026.pdf" target="_blank" class="btn btn-outline">
-                        Download Resume
-                    </a>
-                </div>
-            </div>
-
-            <div class="profile-container fade-in delay-2">
-                <div class="profile-wrapper">
-                    <img src="./assets/profile-pic-2.png" alt="Rohan Ramola" class="profile-img">
-                </div>
-            </div>
+        <div class="exp-achievements">
+          <span class="achievement metric">Flutter</span>
+          <span class="achievement metric">Jetpack Compose</span>
+          <span class="achievement metric">Coroutines &amp; Flow</span>
+          <span class="achievement">Kotlin</span>
+          <span class="achievement">Clean Code</span>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- Intuitive Impact Section -->
-    <section id="impact">
-        <h2 class="section-title fade-in">Engineering Impact</h2>
-        <div class="impact-grid fade-in delay-1">
-            <div class="impact-card">
-                <h3>10+</h3>
-                <p>Projects Delivered</p>
-            </div>
-            <div class="impact-card">
-                <h3>Top</h3>
-                <p>App Performance</p>
-            </div>
-            <div class="impact-card">
-                <h3>Solid</h3>
-                <p>Clean Architecture</p>
-            </div>
+    <!-- Item 1.5 (Freelancing) -->
+    <!-- <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">JUNE 2023 — MARCH 2024</div>
+        <div class="exp-company">Freelance</div>
+        <div class="exp-location">Remote / Delhi</div>
+      </div>
+      <div>
+        <div class="exp-role">Independent Mobile Engineer</div>
+        <div class="exp-tagline">Architecting and delivering robust production software for clients</div>
+        <ul class="exp-bullets">
+          <li class="exp-bullet-item"><strong>Delivered a high-impact EdTech application (PadhaE)</strong> from scratch, meeting precise client specifications and receiving positive user feedback for its highly intuitive interface and **30% increase in application responsiveness**.</li>
+          <li class="exp-bullet-item"><strong>Developed and integrated multiple applications</strong> with secure backend systems using MVVM architecture, improving future maintainability by **25%** and enhancing scalability.</li>
+        </ul>
+        <div class="exp-achievements">
+          <span class="achievement metric">↑30% Responsiveness</span>
+          <span class="achievement metric">↓25% Maintenance Cost</span>
+          <span class="achievement">Android SDK</span>
+          <span class="achievement">Java</span>
+          <span class="achievement">MVVM Architecture</span>
+          <span class="achievement">Play Store Publishing</span>
+          <span class="achievement">API Integration</span>
         </div>
+      </div>
+    </div> -->
 
-        <div class="grid grid-2 fade-in delay-2">
-            <div>
-                <h3 style="margin-bottom: 1rem;">Value-Driven Development</h3>
-                <p style="margin-bottom: 1.5rem;">
-                    My focus isn't just shipping code—it's fast, reliable delivery.
-                    From architectural overhauls that cut technical debt to optimizing render pipelines for 60fps
-                    performance,
-                    I build systems that solve business problems.
-                </p>
-            </div>
-            <div>
-                <h3 style="margin-bottom: 1rem;">Core Competencies</h3>
-                <div class="chip-container" style="padding: 0;">
-                    <span class="chip">Native Android (Kotlin)</span>
-                    <span class="chip">Flutter & Dart</span>
-                    <span class="chip">Jetpack Compose</span>
-                    <span class="chip">Clean Architecture</span>
-                    <span class="chip">System Design</span>
-                    <span class="chip">CI/CD Automation</span>
-                    <span class="chip">Unit Testing</span>
-                </div>
-            </div>
+    <!-- Item 2 (IBM India Pvt. Ltd.) -->
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">JUNE 2022 — MAY 2023</div>
+        <div class="exp-company">IBM India Pvt. Ltd.</div>
+        <div class="exp-location">Noida, UP</div>
+      </div>
+      <div>
+        <div class="exp-role">Technical Consultant</div>
+        <div class="exp-tagline">Optimizing and shipping scalable features</div>
+        <ul class="exp-bullets">
+          <li class="exp-bullet-item"><strong>Improved application performance</strong> by deploying and managing highly available cloud applications on Microsoft Azure infrastructure.</li>
+          <li class="exp-bullet-item"><strong>Shipped scalable product features</strong> leveraging deep engineering expertise in Kotlin, MVVM, Coroutines, Docker, Azure, and Flask.</li>
+        </ul>
+        <div class="exp-achievements">
+          <span class="achievement metric">Kotlin</span>
+          <span class="achievement metric">MVVM</span>
+          <span class="achievement">Coroutines</span>
+          <span class="achievement">Docker</span>
+          <span class="achievement">Flask</span>
+          <span class="achievement">Azure Deployment</span>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section id="work">
-        <h2 class="section-title fade-in">Professional Experience</h2>
-        <div class="grid grid-3 fade-in delay-1">
-
-            <!-- Project 1 -->
-            <article class="project-card">
-                <img src="./assets/project-1.png" alt="Yatra App" class="project-img">
-                <div class="project-content">
-                    <h3>Yatra (Travel)</h3>
-                    <p style="color: var(--color-text-body); font-size: 0.95rem; margin-bottom: 1rem;">
-                        <strong>Optimized Core Core:</strong> Refactored legacy code to <span
-                            style="color: var(--color-primary); font-weight: 600;">Jetpack Compose</span> & Coroutines,
-                        slashing app load times by <strong>30%</strong> and boosting user retention.
-                    </p>
-                    <div class="chip-container">
-                        <span class="chip">Optimization</span>
-                        <span class="chip">Migration</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Project 2 -->
-            <article class="project-card">
-                <img src="./assets/project-2.png" alt="Mi-City CEP" class="project-img">
-                <div class="project-content">
-                    <h3>Mi-City CEP</h3>
-                    <p style="color: var(--color-text-body); font-size: 0.95rem; margin-bottom: 1rem;">
-                        <strong>Architected Agility:</strong> Built a <span
-                            style="color: var(--color-primary); font-weight: 600;">Server-Driven UI</span> framework,
-                        enabling the team to push instant layout updates without waiting for App Store reviews.
-                    </p>
-                    <div class="chip-container">
-                        <span class="chip">SDUI Architecture</span>
-                        <span class="chip">Scalability</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Project 3 -->
-            <article class="project-card">
-                <img src="./assets/project-3.png" alt="VMS System" class="project-img">
-                <div class="project-content">
-                    <h3>Enterprise VMS</h3>
-                    <p style="color: var(--color-text-body); font-size: 0.95rem; margin-bottom: 1rem;">
-                        <strong>Engineered Reliability:</strong> Developed a high-concurrency video system supporting
-                        background ingestion and glitch-free offline playback.
-                    </p>
-                    <div class="chip-container">
-                        <span class="chip">Video Engineering</span>
-                        <span class="chip">Async I/O</span>
-                    </div>
-                </div>
-            </article>
-
+    <!-- Item 3 (Skrolled) -->
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">MARCH 2022 — JUNE 2022</div>
+        <div class="exp-company">Skrolled</div>
+        <div class="exp-location">Delhi, India</div>
+      </div>
+      <div>
+        <div class="exp-role">Software Development Executive</div>
+        <div style="font-family:var(--mono); font-size:10px; color:var(--text-dim); text-transform:uppercase; margin-bottom:0.75rem;">Internship</div>
+        <div class="exp-tagline">End-to-end mobile architecture from absolute scratch</div>
+        <ul class="exp-bullets">
+          <li class="exp-bullet-item"><strong>Delivered production application from scratch</strong>, steering and managing the complete end-to-end software application lifecycle.</li>
+          <li class="exp-bullet-item"><strong>Implemented best engineering practices</strong>, incorporating MVVM architecture, Jetpack Components, and Asynchronous tasks to drastically boost app render performance.</li>
+        </ul>
+        <div class="exp-achievements">
+          <span class="achievement metric">Play Store Deployment</span>
+          <span class="achievement">Android SDK</span>
+          <span class="achievement">Jetpack Components</span>
+          <span class="achievement">Async Programming</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="contact">
-        <div class="contact-wrapper fade-in">
-            <h2>Ready to Scale Your Mobile Team?</h2>
-            <p style="max-width: 500px; margin: 0 auto; opacity: 0.9;">
-                I bring 2.5+ years of proven engineering experience. Let's discuss how I can contribute to your
-                engineering goals.
-            </p>
-            <a href="mailto:rohanramola63@gmail.com" class="contact-btn">Hire Me</a>
+<!-- ─── SKILLS ─── -->
+<section id="skills">
+  <div class="section-eyebrow">02 — Expertise</div>
+  <h2 class="section-title">Technical <em>depth,</em><br>not just breadth</h2>
 
-            <div style="margin-top: 3rem; display: flex; gap: 2rem; justify-content: center; opacity: 0.8;">
-                <a href="https://linkedin.com/in/rohanramola13/" style="color: white; font-weight: 600;">LinkedIn
-                    Profile</a>
-                <a href="https://github.com/rohan0713" style="color: white; font-weight: 600;">GitHub Portfolio</a>
-            </div>
+  <div class="skills-grid">
+    <!-- Category 1 -->
+    <div class="skill-category reveal">
+      <div class="skill-cat-title">// Languages &amp; Frameworks</div>
+      <div class="skills-pill-box">
+        <span class="skill-pill core">Kotlin</span>
+        <span class="skill-pill core">Flutter</span>
+        <span class="skill-pill core">Jetpack Compose</span>
+        <span class="skill-pill core">Java</span>
+        <span class="skill-pill core">Dart</span>
+        <span class="skill-pill">Retrofit</span>
+        <span class="skill-pill">Dagger Hilt</span>
+        <span class="skill-pill">Room</span>
+        <span class="skill-pill">Firebase</span>
+        <span class="skill-pill">GetX</span>
+        <span class="skill-pill">Riverpod</span>
+        <span class="skill-pill">Dio</span>
+        <span class="skill-pill">Coroutines</span>
+        <span class="skill-pill">Flow</span>
+        <span class="skill-pill">MVVM / MVC</span>
+        <span class="skill-pill">Clean Architecture</span>
+      </div>
+    </div>
+
+    <!-- Category 2 -->
+    <div class="skill-category reveal">
+      <div class="skill-cat-title">// Tools &amp; Technologies</div>
+      <div class="skills-pill-box">
+        <span class="skill-pill core">Android Studio</span>
+        <span class="skill-pill core">Xcode</span>
+        <span class="skill-pill">Git</span>
+        <span class="skill-pill">GitLab</span>
+        <span class="skill-pill">GitHub</span>
+        <span class="skill-pill">Gitea</span>
+        <span class="skill-pill">TortoiseSVN</span>
+        <span class="skill-pill">VS Code</span>
+        <span class="skill-pill">Postman</span>
+        <span class="skill-pill">JIRA</span>
+        <span class="skill-pill">Push Notifications</span>
+        <span class="skill-pill">WebSockets</span>
+        <span class="skill-pill">RabbitMQ</span>
+        <span class="skill-pill">Remote Config</span>
+        <span class="skill-pill">Analytics</span>
+        <span class="skill-pill">Crashlytics</span>
+        <span class="skill-pill">Docker</span>
+        <span class="skill-pill">Microsoft Azure</span>
+        <span class="skill-pill">Agile / Scrum</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROJECTS ─── -->
+<section id="projects">
+  <div class="section-eyebrow">03 — Projects</div>
+  <h2 class="section-title">Work that <em>proves</em><br>the résumé</h2>
+
+  <div class="projects-grid">
+    <!-- Project 1 (Workforce App) -->
+    <div class="project-card reveal">
+      <div>
+        <div class="project-index">01 // NEC INDIA</div>
+        <h3 class="project-name" style="margin-top:0.25rem;">Workforce</h3>
+      </div>
+      <div class="project-impact">"Real-time incident dispatch ecosystem deployed in Indonesia"</div>
+      <ul class="project-desc-bullets">
+        <li class="project-desc-bullet"><strong>Geo-Tracking &amp; Camera Pipeline</strong>: Engineered active background location services for operator assignments, paired with native Camera/Gallery APIs to click live images, record step videos, and compress attachments.</li>
+        <li class="project-desc-bullet"><strong>WebSocket Chat Ecosystem</strong>: Developed a robust, real-time in-app chat box supporting group chats, individual chats, and dynamic group administration between operators, admins, and superadmins via custom WebSocket channels.</li>
+        <li class="project-desc-bullet"><strong>GetX Localization &amp; Themes</strong>: Integrated full multi-language translations (English, Hindi, Japanese, Malayalam) and dynamic Light/Dark theme switching using GetX.</li>
+      </ul>
+      <div class="project-tags">
+        <span class="project-tag">Flutter</span>
+        <span class="project-tag">GetX</span>
+        <span class="project-tag">WebSockets</span>
+        <span class="project-tag">Background Location</span>
+        <span class="project-tag">Camera API</span>
+        <span class="project-tag">Dynamic Theme</span>
+        <span class="project-tag">Localization</span>
+      </div>
+    </div>
+
+    <!-- Project 2 (Yatra) -->
+    <div class="project-card reveal">
+      <div>
+        <div class="project-index">02 // BIG OH TECH</div>
+        <h3 class="project-name" style="margin-top:0.25rem;">Yatra — Travel App</h3>
+      </div>
+      <div class="project-impact">"Java to Kotlin migration, UI/UX optimization"</div>
+      <ul class="project-desc-bullets">
+        <li class="project-desc-bullet"><strong>Java to Kotlin Migration</strong>: Streamlined the unified codebase structure and improved maintainability by 30%.</li>
+        <li class="project-desc-bullet"><strong>Memory Leak Optimization</strong>: Identified and resolved memory leaks utilizing LeakCanary and Android Studio Memory Profiler, reducing crashes and stabilizing overall performance by 25%.</li>
+        <li class="project-desc-bullet"><strong>Dashboard &amp; Flight UI Revamp</strong>: Revamped user interface of the dashboard and flight module, improving user engagement and user experience.</li>
+        <li class="project-desc-bullet"><strong>Performance Refactoring</strong>: Optimized performance using Coroutines and flows, reducing load times and boosting responsiveness.</li>
+      </ul>
+      <div class="project-tags">
+        <span class="project-tag">Android</span>
+        <span class="project-tag">Java</span>
+        <span class="project-tag">Kotlin</span>
+        <span class="project-tag">Jetpack Compose</span>
+        <span class="project-tag">Coroutines</span>
+        <span class="project-tag">Flows</span>
+      </div>
+    </div>
+
+    <!-- Project 3 (Mi-City CEP) -->
+    <div class="project-card reveal">
+      <div>
+        <div class="project-index">03 // NEC INDIA</div>
+        <h3 class="project-name" style="margin-top:0.25rem;">MiCity - Citizen App</h3>
+      </div>
+      <div class="project-impact">"Dynamic build configuration &amp; voice engine integration"</div>
+      <ul class="project-desc-bullets">
+        <li class="project-desc-bullet"><strong>Multi-Environment Build Flavors</strong>: Designed a scalable multi-environment build system from a single codebase, improving release reliability.</li>
+        <li class="project-desc-bullet"><strong>Server-Driven UI (SDUI)</strong>: Implemented a server-driven UI model for real-time layout updates reducing manual app releases tasks by 20%.</li>
+        <li class="project-desc-bullet"><strong>Razorpay Payment Integration</strong>: Integrated secure payment gateway processing for in-app client transactions.</li>
+        <li class="project-desc-bullet"><strong>Voice to Text Feature</strong>: Designed and integrated custom voice-to-text input processing.</li>
+        <li class="project-desc-bullet"><strong>Multi-Language Localization</strong>: Implemented localized translation resources to support internationalization.</li>
+      </ul>
+      <div class="project-tags">
+        <span class="project-tag">Flutter</span>
+        <span class="project-tag">GetX</span>
+        <span class="project-tag">Razorpay SDK</span>
+        <span class="project-tag">Voice-to-Text</span>
+        <span class="project-tag">SDUI</span>
+        <span class="project-tag">Localization</span>
+      </div>
+    </div>
+
+    <!-- Project 4 (VMS) -->
+    <div class="project-card reveal">
+      <div>
+        <div class="project-index">04 // NEC INDIA</div>
+        <h3 class="project-name" style="margin-top:0.25rem;">VMS (Video System)</h3>
+      </div>
+      <div class="project-impact">"AI-accelerated architecture, embedded web experience"</div>
+      <ul class="project-desc-bullets">
+        <li class="project-desc-bullet"><strong>Scalable Architecture</strong>: Architected a scalable Flutter codebase using Riverpod and Clean Architecture principles.</li>
+        <li class="project-desc-bullet"><strong>Seamless Stream Playback</strong>: Engineered seamless live video playback implementing efficient asynchronous streams.</li>
+        <li class="project-desc-bullet"><strong>AI-Accelerated Development</strong>: Used Antigravity and Claude to tackle complex problems and deliver the project within a short timeframe.</li>
+        <li class="project-desc-bullet"><strong>Premium Webview Handling</strong>: Implemented custom Webview lifecycle handling to deliver a better user experience on mobile viewports.</li>
+      </ul>
+      <div class="project-tags">
+        <span class="project-tag">Flutter</span>
+        <span class="project-tag">Riverpod</span>
+        <span class="project-tag">AI-Leveraged</span>
+        <span class="project-tag">Webview Bridging</span>
+        <span class="project-tag">Clean Architecture</span>
+      </div>
+    </div>
+
+    <!-- Project 5 (PadhaE) -->
+    <div class="project-card reveal">
+      <div>
+        <div class="project-index">05 // FREELANCE CLIENT</div>
+        <h3 class="project-name" style="margin-top:0.25rem;">PadhaE — EdTech App</h3>
+      </div>
+      <div class="project-impact">"Java Android App built from scratch, launched on Play Store"</div>
+      <ul class="project-desc-bullets">
+        <li class="project-desc-bullet"><strong>Provides comprehensive learning programs</strong> including Live lectures, Recorded classes, and notes helping students crack school and competitive exams.</li>
+        <li class="project-desc-bullet"><strong>Created using Java from scratch</strong>, closely collaborating with backend engineers to design, test, and implement robust APIs.</li>
+        <li class="project-desc-bullet"><strong>Managed complete publishing lifecycle</strong> on the Google Play Store, handling asset setup, release testing, and policy compliance.</li>
+      </ul>
+      <div style="margin-top:1rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem;">
+        <div class="project-tags" style="margin-top:0;">
+          <span class="project-tag">Java</span>
+          <span class="project-tag">Android SDK</span>
+          <span class="project-tag">MVVM</span>
+          <span class="project-tag">API Integration</span>
+          <span class="project-tag">Play Store</span>
         </div>
-    </section>
+        <a class="contact-link" href="https://www.youtube.com/watch?v=7QNYCCAaGi8" target="_blank" style="padding: 0.4rem 0.8rem; font-size:10px; border-color: rgba(232, 213, 163, 0.3); border-radius: 0;">
+          ▶ Watch Demo
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <p>© 2024 Rohan Ramola. Built for Performance.</p>
-    </footer>
+<!-- ─── EDUCATION ─── -->
+<section id="education">
+  <div class="section-eyebrow">04 — Education</div>
+  <h2 class="section-title">Built on a <em>strong</em><br>foundation</h2>
 
+  <div class="edu-item reveal">
+    <div class="edu-year">JULY 2019 — JULY 2022</div>
+    <div>
+      <div class="edu-degree">Master of Computer Applications (MCA)</div>
+      <div class="edu-school">Amity University, Noida, UP</div>
+      <div class="edu-detail">Post-Graduate degree with specialization in Mobile Systems &amp; Software Architectures</div>
+    </div>
+  </div>
+
+  <div class="edu-item reveal">
+    <div class="edu-year">JULY 2015 — AUG. 2018</div>
+    <div>
+      <div class="edu-degree">Bachelor of Science, BSc.(CS)</div>
+      <div class="edu-school">Atma Ram Sanatan Dharma College, Delhi University</div>
+      <div class="edu-detail">Undergraduate degree in Computer Science - Foundation in algorithms, databases, and mathematics</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="section-eyebrow" style="justify-content:center; gap:1rem;">
+    <span>05 — Contact</span>
+  </div>
+  <h2 class="contact-headline">Let's build<br>something <em>great.</em></h2>
+  <p class="contact-sub">
+    Open to mobile engineering roles, technical consulting, and interesting cross-platform problems.
+    I typically respond within 24 hours.
+  </p>
+
+  <!-- Interactive Click-To-Copy Email -->
+  <div class="email-wrapper" id="emailWrapper" title="Click to copy email address">
+    <span class="contact-email">rohanramola63@gmail.com</span>
+    <button class="copy-btn" aria-label="Copy email address">
+      📋
+    </button>
+    <div class="copy-tooltip" id="copyTooltip">Copy Email</div>
+  </div>
+
+  <div class="contact-links">
+    <a class="contact-link" href="https://linkedin.com/in/rohanramola13/" target="_blank">
+      ↗ LinkedIn
+    </a>
+    <a class="contact-link" href="https://github.com/rohan0713" target="_blank">
+      ↗ GitHub
+    </a>
+    <a class="contact-link" href="./assets/RohanRamola-Resume-2026.pdf" target="_blank">
+      ↓ Resume PDF
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">© 2026 Rohan Ramola</span>
+  <span class="footer-built">Engineer for Performance &amp; Stability.</span>
+</footer>
+
+<script>
+  // ─── AMBIENT GLOW EFFECT ───
+  const cursorGlow = document.getElementById('cursorGlow');
+  
+  if (window.matchMedia("(pointer: fine)").matches) {
+    document.addEventListener('mousemove', (e) => {
+      cursorGlow.style.left = `${e.clientX}px`;
+      cursorGlow.style.top = `${e.clientY}px`;
+    });
+    
+    document.addEventListener('mouseenter', () => {
+      cursorGlow.style.opacity = '1';
+    });
+    
+    document.addEventListener('mouseleave', () => {
+      cursorGlow.style.opacity = '0';
+    });
+    
+    // Initial fade in if mouse is already in page
+    cursorGlow.style.opacity = '1';
+  }
+
+  // ─── RESPONSIVE HAMBURGER MENU ───
+  const navHamburger = document.getElementById('navHamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  function toggleMenu() {
+    navHamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    
+    if (mobileMenu.classList.contains('active')) {
+      document.body.style.overflow = 'hidden'; // Stop scrolling behind overlay
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+
+  navHamburger.addEventListener('click', toggleMenu);
+
+  // ─── CLICK-TO-COPY EMAIL ───
+  const emailWrapper = document.getElementById('emailWrapper');
+  const copyTooltip = document.getElementById('copyTooltip');
+
+  emailWrapper.addEventListener('click', () => {
+    navigator.clipboard.writeText('rohanramola63@gmail.com').then(() => {
+      copyTooltip.textContent = 'Copied Address!';
+      copyTooltip.classList.add('active');
+      
+      setTimeout(() => {
+        copyTooltip.classList.remove('active');
+        // Reset text after animation fades out
+        setTimeout(() => {
+          copyTooltip.textContent = 'Copy Email';
+        }, 250);
+      }, 2000);
+    });
+  });
+
+  // ─── SCROLL REVEALS ───
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Stagger hero elements on load
+  const heroEls = document.querySelectorAll('.hero-tag, .hero-name, .hero-title, .hero-desc, .hero-actions, .stat-grid, .hero-stack');
+  heroEls.forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    setTimeout(() => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 200 + i * 100);
+  });
+</script>
 </body>
-
 </html>
